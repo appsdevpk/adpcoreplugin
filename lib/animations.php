@@ -141,7 +141,7 @@ function adpParseAnimAttributes($settings,$animPrefix,$delayMulti=''){
 		$delay = $delayNum * $delayMultiNum;
 	}
 	$duration = $settings[$animPrefix.'duration'];
-	return 'data-aos-once="true" data-aos="'.$animation.'" data-aos-offset="'.$offset.'" data-aos-delay="'.$delay.'" data-aos-duration="'.$duration.'" data-aos-easing="'.$easing.'" data-aos-anchor-placement="'.$anchor_placement.'"';
+	return 'data-aos="'.$animation.'" data-aos-offset="'.$offset.'" data-aos-delay="'.$delay.'" data-aos-duration="'.$duration.'" data-aos-easing="'.$easing.'" data-aos-anchor-placement="'.$anchor_placement.'"';
 }
 function adpGetSiteSectionAnimation($parse=true){
 	$retVal = [];
@@ -151,7 +151,7 @@ function adpGetSiteSectionAnimation($parse=true){
 			if(!$parse){
 				$retVal[$anim['animsecname']] = $anim;
 			}else{
-				$retVal[$anim['animsecname']] = 'data-aos-once="true" data-aos="'.$anim['animation'].'" data-aos-offset="'.$anim['offset'].'" data-aos-delay="'.$anim['delay'].'" data-aos-duration="'.$anim['duration'].'" data-aos-easing="'.$anim['easing'].'" data-aos-anchor-placement="'.$anim['anchorplacement'].'"';
+				$retVal[$anim['animsecname']] = 'data-aos="'.$anim['animation'].'" data-aos-offset="'.$anim['offset'].'" data-aos-delay="'.$anim['delay'].'" data-aos-duration="'.$anim['duration'].'" data-aos-easing="'.$anim['easing'].'" data-aos-anchor-placement="'.$anim['anchorplacement'].'"';
 			}
 		}
 	}

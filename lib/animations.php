@@ -4,7 +4,8 @@ add_action( 'cmb2_admin_init', function(){
 		'id'           => 'adpSiteAnimationsMetaBox',
 		'title'        => esc_html__( 'Site Animations', '' ),
 		'object_types' => array( 'options-page' ),
-		'option_key'  => 'adpSiteAnimations'
+		'option_key'  => 'adpSiteAnimations',
+		'parent_slug' => 'AdpAdminTools'
 	) );
 	$cmbSiteAnim->add_field( array(
 		'name' => 'Play Once',
@@ -79,6 +80,40 @@ add_action( 'cmb2_admin_init', function(){
 		)
 	) );
 });
+function adpGetAnimationsList(){
+	$animations = [
+		'Fade animations'=>'fade,fade-up,fade-down,fade-left,fade-right,fade-up-right,fade-up-left,fade-down-right,fade-down-left',
+		'Flip animations'=>'flip-up,flip-down,flip-left,flip-right',
+		'Slide animations'=>'slide-up,slide-down,slide-left,slide-right',
+		'Zoom animations'=>'zoom-in,zoom-in-up,zoom-in-down,zoom-in-left,zoom-in-right,zoom-out,zoom-out-up,zoom-out-down,zoom-out-left,zoom-out-right'
+	];
+	$animationsList = [];
+	foreach($animations as $key=>$val){
+		$valsList = explode(",",$val);
+		//$animationsList[$key] = [];
+		foreach($valsList as $v){
+			$animationsList[$v] = $v;
+		}
+	}
+	return $animationsList;
+}
+function adpGetAncherPlacements(){
+	$anchorPl = explode(",",'top-bottom,top-center,top-top,center-bottom,center-center,center-top,bottom-bottom,bottom-center,bottom-top');
+	$anchorPlList = [];
+	foreach($anchorPl as $ap){
+		$anchorPlList[$ap] = $ap;
+	}
+	return $anchorPlList;
+}
+
+function getEasingsList(){
+	$eadings = explode(",","linear,ease,ease-in,ease-out,ease-in-out,ease-in-back,ease-out-back,ease-in-out-back,ease-in-sine,ease-out-sine,ease-in-out-sine,ease-in-quad,ease-out-quad,ease-in-out-quad,ease-in-cubic,ease-out-cubic,ease-in-out-cubic,ease-in-quart,ease-out-quart,ease-in-out-quart");
+	$eadingsList = [];
+	foreach($eadings as $eading){
+		$eadingsList[$eading] = $eading;
+	}
+	return $eadingsList;
+}
 function adpGetSiteAnimations() {
 	$default = false;
 	$key = 'adpAnimationsList';

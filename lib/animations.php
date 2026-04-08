@@ -114,9 +114,9 @@ function getEasingsList(){
 	}
 	return $eadingsList;
 }
-function adpGetSiteAnimations() {
+function adpGetSiteAnimations($defkey='') {
 	$default = false;
-	$key = 'adpAnimationsList';
+	$key = $defkey!='' ? $defkey : 'adpAnimationsList';
 	if ( function_exists( 'cmb2_get_option' ) ) {
 		return cmb2_get_option( 'adpSiteAnimations', $key, $default );
 	}
@@ -158,12 +158,16 @@ function adpGetSiteSectionAnimation($parse=true){
 	return $retVal;
 }
 add_action('wp_footer', function(){
+	$playOnce = adpGetSiteAnimations('animPlayOnce');
+	$once = $playOnce=='yes' ? 'true' : 'false';
 	?>
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script>
 		jQuery(document).ready(function(){
-			AOS.init();
+			AOS.init({
+				once: <?php echo $once; ?>
+			});
 		});
 	</script>
 	<?php

@@ -3,7 +3,7 @@
 Plugin Name: adpCore
 Plugin URI: https://appsdevpk.com/
 Description: adpCore
-Version: 1.0.1
+Version: 1.0.2
 Author: AppsDevPk
 Author URI: https://appsdevpk.com
 License: GPLv2 or later
